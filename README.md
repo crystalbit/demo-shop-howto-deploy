@@ -16,8 +16,8 @@ I use Debian 9 stretch and every further command in the instruction is for this 
 **Note:** for dev environment on your localhost you shall use any browser plugin, what can enable CORS for a webpage because backend app and frontend app are on different ports and a browser restricts requests to another port as like it is another domain.
 
 ## Repositories
-* Front (react): https://github.com/crystalbit/react-demo-shop-front
-* Back (node.js): https://github.com/crystalbit/node-demo-shop-api
+* Frontend (react): https://github.com/crystalbit/react-demo-shop-front
+* Backend (node.js): https://github.com/crystalbit/node-demo-shop-api
 * also you will need this repository
 
 Note that current repository has a database dump and a directory with images for the products. It is used like an install script for uploads and a database.
@@ -32,7 +32,7 @@ $ git clone git@github.com:crystalbit/node-demo-shop-api.git
 $ git clone git@github.com:crystalbit/demo-shop-howto-deploy.git
 ```
 
-## Configure, install and build the front
+## Configure, install and build the frontend
 Install:
 ```console
 $ cd ~
@@ -69,7 +69,7 @@ $ mysql -u mysql_username -p database_name < demo-shop-howto-deploy/database/ins
 ```
 Ready!
 
-## Install, run and set startup script for back
+## Install, run and set startup script for backend
 First install pm2 npm package globally
 ```console
 $ sudo npm install pm2 -g
@@ -90,9 +90,9 @@ module.exports = {
         mysql: {
             host: 'localhost',
             port: 3306,
-            user: '',
+            user: 'mysql_username',
             password: '',
-            database: 'pizzashop',
+            database: 'database_name',
             prefix: 'inno_'
         }
     }
@@ -100,8 +100,6 @@ module.exports = {
 ```
 
 Feel free to fill config with your MySQL login, password, etc.
-
-TODO to make info on test and dev databases if I implement it
 
 Run:
 ```console
@@ -118,7 +116,6 @@ You shall see
 0|api  | > node-demo-shop-api@1.0.0 start /home/user/node-demo-shop-api
 0|api  | > node index
 0|api  | API started at port 3333
-0|api  | Connection has been established successfully.
 ```
 
 Set to startup:
@@ -133,7 +130,7 @@ Last but not least
 
 **Note:** do not use nginx for dev environment
 
-You need to configure nginx to serve requests to back, front and assets correctly
+You need to configure nginx to serve requests to backend, frontend and assets correctly
 
 Edit nginx config as root:
 ```console
