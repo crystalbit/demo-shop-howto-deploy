@@ -2,6 +2,8 @@
 
 Hi! Here is an instruction :)
 
+# Deploy
+
 ## Preparing
 First you need a server. Then you shall install:
 * nginx,
@@ -22,7 +24,7 @@ Note that current repository has a database dump and a directory with images for
 And this readme is the last but not least option here :)
 
 ## Get repos
-Clone the three repositories in your home dir (whenether you want, but homedir in this example):
+Clone the three repositories in your home dir (whenether you want, I use homedir in this example):
 ```console
 $ cd ~
 $ git clone git@github.com:crystalbit/react-demo-shop-front.git
@@ -166,4 +168,17 @@ It shall restart silently without errors and warnings
 ## Conclusion
 You are great. Now you can visit the shop by ip in a browser
 
-TODO DODODODDO TESTING!
+# Testing
+You can easily run tests for both frontend and backend in the dev environment.
+
+## Testing backend
+Move to backend project directory and run `npm test`
+
+There are 4 tests now:
+* `db-order.js` tests order database functions: creates an order and adds order position to it;
+* `db-product.js` tests product database functions: creates, modifies and looks for a product;
+* `server-list-products.js` emulates server and fetches product list via http query;
+* `server-push-orders.js` emulates server and creates new order with existing api.
+
+## Testing frontend
+TODO
