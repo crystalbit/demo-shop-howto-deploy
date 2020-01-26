@@ -180,5 +180,39 @@ There are 4 tests now:
 * `server-list-products.js` emulates server and fetches product list via http query;
 * `server-push-orders.js` emulates server and creates new order with existing api.
 
+## Sample backend test output
+```console
+➜  node-demo-shop-api git:(feature-tests) npm test 
+> node-demo-shop-api@1.0.0 test /Users/kek/node-demo-shop-api
+> mocha test/**/*.js --recursive --exit
+
+
+
+API started at port 3333
+  Order test / Тест заказа
+    ✓ create order / создаём заказ (159ms)
+    ✓ adding position / добавляем позицию
+
+  Product test / Тест продукта
+    ✓ create product / создаём продукт "пицца "7df706d0159165f4a3f92ead2c1c299c20e2fd28""
+    ✓ product update / обновляем этот продукт
+    ✓ find the product / находим этот продукт
+    ✓ delete product / удаляем продукт
+    ✓ be sure that we really deleted the product / продукт удалён, и его уже не найти
+
+  Тест получения списка продуктов / Loading products api test
+Sun, 26 Jan 2020 22:39:11 GMT GET /api/products/list 200 4214 - 16.892 ms
+    ✓ загружаем продукты / loading products (57ms)
+
+  Тест создания заказа / Creating order test
+Sun, 26 Jan 2020 22:39:11 GMT POST /api/orders/push 200 16 - 38.144 ms
+    ✓ создаём заказ / creating order (61ms)
+Sun, 26 Jan 2020 22:39:11 GMT POST /api/orders/push 200 49 - 0.286 ms
+    ✓ проверяем серверную валидацию / check server validation
+
+
+  10 passing (502ms)
+  ```
+
 ## Testing frontend
 TODO
