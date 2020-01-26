@@ -60,8 +60,14 @@ Building:
 $ npm run build
 ```
 
-## Import MySQL dump with products and assets
-TODO!
+## Import MySQL dump with products
+First create a database and a user.
+Then import schema and products:
+```console
+$ cd ~
+$ mysql -u mysql_username -p database_name < demo-shop-howto-deploy/database/install.sql
+```
+Ready!
 
 ## Install, run and set startup script for back
 First install pm2 npm package globally
