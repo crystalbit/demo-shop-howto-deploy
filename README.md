@@ -181,7 +181,7 @@ There are 4 tests now:
 * `db-order.js` tests order database functions: creates an order and adds order position to it;
 * `db-product.js` tests product database functions: creates, modifies and looks for a product;
 * `server-list-products.js` emulates server and fetches product list via http query;
-* `server-push-orders.js` emulates server and creates new order with existing api.
+* `server-push-orders.js` emulates server and creates new order with existing api, also creates order with invalid phone to check server validation.
 
 ## Sample backend test output
 ```console
@@ -218,4 +218,31 @@ Sun, 26 Jan 2020 22:39:11 GMT POST /api/orders/push 200 49 - 0.286 ms
   ```
 
 ## Testing frontend
-TODO
+Move to frontend project directory and run `npm test`
+Press `a` if no tests are found.
+
+There are 6 tests now:
+* `App.test.js` just render App and check if the caption is where it needs to be;
+* `validateClient.test.js` validates client pagination (valid and invalid data - two tests);
+* `Header.snapshot.test.js` compares a snapshot of Header component to rendered Header;
+* `Product.snapshot.test.js` compares a snapshot of Product component to rendered with sample data Product;
+* `Cart-Element.snapshot.test.js` compares a snapshot of Cart/Element component to rendered with sample data Cart/Element;
+* `Cart-Thumbnail.snapshot.test.js` compares a snapshot of Cart/Thumbnail component to rendered with sample data Cart/Thumbnail;
+
+## Sample frontend test output
+```console
+ PASS  src/__tests__/Cart-Thumbnail.snapshot.test.js
+ PASS  src/__tests__/Cart-Element.snapshot.test.js
+ PASS  src/__tests__/Product.snapshot.test.js
+ PASS  src/__tests__/App.test.js
+ PASS  src/__tests__/Header.snapshot.test.js
+ PASS  src/__tests__/validateClient.test.js
+
+Test Suites: 6 passed, 6 total
+Tests:       7 passed, 7 total
+Snapshots:   4 passed, 4 total
+Time:        5.554s, estimated 7s
+Ran all test suites.
+
+Watch Usage: Press w to show more.
+```
