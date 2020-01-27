@@ -16,8 +16,8 @@ I use Debian 9 stretch and every further command in the instruction is for this 
 **Note:** for dev environment on your localhost you shall use any browser plugin, what can enable CORS for a webpage because backend app and frontend app are on different ports and a browser restricts requests to another port as like it is another domain.
 
 ## Repositories
-* Front (react): https://github.com/crystalbit/react-demo-shop-front
-* Back (node.js): https://github.com/crystalbit/node-demo-shop-api
+* Frontend (react): https://github.com/crystalbit/react-demo-shop-front
+* Backend (node.js): https://github.com/crystalbit/node-demo-shop-api
 * also you will need this repository
 
 Note that current repository has a database dump and a directory with images for the products. It is used like an install script for uploads and a database.
@@ -32,7 +32,7 @@ $ git clone git@github.com:crystalbit/node-demo-shop-api.git
 $ git clone git@github.com:crystalbit/demo-shop-howto-deploy.git
 ```
 
-## Configure, install and build the front
+## Configure, install and build the frontend
 Install:
 ```console
 $ cd ~
@@ -69,7 +69,7 @@ $ mysql -u mysql_username -p database_name < demo-shop-howto-deploy/database/ins
 ```
 Ready!
 
-## Install, run and set startup script for back
+## Install, run and set startup script for backend
 First install pm2 npm package globally
 ```console
 $ sudo npm install pm2 -g
@@ -90,9 +90,9 @@ module.exports = {
         mysql: {
             host: 'localhost',
             port: 3306,
-            user: '',
+            user: 'mysql_username',
             password: '',
-            database: 'pizzashop',
+            database: 'database_name',
             prefix: 'inno_'
         }
     }
@@ -100,8 +100,6 @@ module.exports = {
 ```
 
 Feel free to fill config with your MySQL login, password, etc.
-
-TODO to make info on test and dev databases if I implement it
 
 Run:
 ```console
@@ -118,7 +116,6 @@ You shall see
 0|api  | > node-demo-shop-api@1.0.0 start /home/user/node-demo-shop-api
 0|api  | > node index
 0|api  | API started at port 3333
-0|api  | Connection has been established successfully.
 ```
 
 Set to startup:
@@ -133,7 +130,7 @@ Last but not least
 
 **Note:** do not use nginx for dev environment
 
-You need to configure nginx to serve requests to back, front and assets correctly
+You need to configure nginx to serve requests to backend, frontend and assets correctly
 
 Edit nginx config as root:
 ```console
@@ -184,7 +181,7 @@ There are 4 tests now:
 * `db-order.js` tests order database functions: creates an order and adds order position to it;
 * `db-product.js` tests product database functions: creates, modifies and looks for a product;
 * `server-list-products.js` emulates server and fetches product list via http query;
-* `server-push-orders.js` emulates server and creates new order with existing api.
+* `server-push-orders.js` emulates server and creates new order with existing api, also creates order with invalid phone to check server validation.
 
 ## Sample backend test output
 ```console
@@ -221,4 +218,32 @@ Sun, 26 Jan 2020 22:39:11 GMT POST /api/orders/push 200 49 - 0.286 ms
   ```
 
 ## Testing frontend
-TODO
+Move to frontend project directory and run `npm test`
+
+Press `a` if no tests were found.
+
+There are 6 tests now:
+* `App.test.js` just renders App and checks if the caption is where it should be;
+* `validateClient.test.js` tests client validation (valid and invalid data - two tests);
+* `Header.snapshot.test.js` compares a snapshot of Header component to rendered Header;
+* `Product.snapshot.test.js` compares a snapshot of Product component to rendered with sample data Product;
+* `Cart-Element.snapshot.test.js` compares a snapshot of Cart/Element component to rendered with sample data Cart/Element;
+* `Cart-Thumbnail.snapshot.test.js` compares a snapshot of Cart/Thumbnail component to rendered with sample data Cart/Thumbnail;
+
+## Sample frontend test output
+```console
+ PASS  src/__tests__/Cart-Thumbnail.snapshot.test.js
+ PASS  src/__tests__/Cart-Element.snapshot.test.js
+ PASS  src/__tests__/Product.snapshot.test.js
+ PASS  src/__tests__/App.test.js
+ PASS  src/__tests__/Header.snapshot.test.js
+ PASS  src/__tests__/validateClient.test.js
+
+Test Suites: 6 passed, 6 total
+Tests:       7 passed, 7 total
+Snapshots:   4 passed, 4 total
+Time:        5.554s, estimated 7s
+Ran all test suites.
+
+Watch Usage: Press w to show more.
+```
