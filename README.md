@@ -1,7 +1,7 @@
 # Demo Shop
 
 Hi! This is the demo shop.
-It consists of frontend and basckend parts in separate repositories.
+It consists of frontend and backend parts in separate repositories.
 
 # Some information:
 * Frontend is written in React with Material UI using create-react-app and jest for tests.
@@ -11,7 +11,9 @@ It consists of frontend and basckend parts in separate repositories.
 * And can be easily run on localhost without nginx with a full functionality.
 
 Project is deployed here: http://5.101.116.39/
+
 Feel free to make any orders and register with any random mail (no letters and confirmations and no managers to call you and offer pizza :) )
+
 But the server will be online till 22.02.2020 unless I decide to prolong it.
 
 ## INSTRUCTIONS
@@ -24,12 +26,12 @@ Please, visit these links:
 
 ## Repositories:
 
-The project contasins of three repositories:
+The project contains of three repositories:
 
 * Frontend (react): https://github.com/crystalbit/react-demo-shop-front
 * Backend (node.js): https://github.com/crystalbit/node-demo-shop-api
-* also you will need this repository
+* also you will need the current repository: https://github.com/crystalbit/demo-shop-howto-deploy
 
 ## MySQL dump and images
 
-There are also mysql dump and images in the repo. To properly install that please see [DEV](./DEPLOY_DEV.md) or [PROD](./DEPLOY_ON_SERVER.md) instruction.
+There are also mysql dump and images in the repo. To properly install them please see [DEV](./DEPLOY_DEV.md) or [PROD](./DEPLOY_ON_SERVER.md) instruction.
