@@ -219,11 +219,12 @@ Sun, 26 Jan 2020 22:39:11 GMT POST /api/orders/push 200 49 - 0.286 ms
 
 ## Testing frontend
 Move to frontend project directory and run `npm test`
-Press `a` if no tests are found.
+
+Press `a` if no tests were found.
 
 There are 6 tests now:
-* `App.test.js` just render App and check if the caption is where it needs to be;
-* `validateClient.test.js` validates client pagination (valid and invalid data - two tests);
+* `App.test.js` just renders App and checks if the caption is where it should be;
+* `validateClient.test.js` tests client validation (valid and invalid data - two tests);
 * `Header.snapshot.test.js` compares a snapshot of Header component to rendered Header;
 * `Product.snapshot.test.js` compares a snapshot of Product component to rendered with sample data Product;
 * `Cart-Element.snapshot.test.js` compares a snapshot of Cart/Element component to rendered with sample data Cart/Element;
