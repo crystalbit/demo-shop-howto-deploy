@@ -2,17 +2,16 @@ START TRANSACTION;
 
 CREATE TABLE `inno_clients` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `login` varchar(30) NOT NULL,
   `password_hash` varchar(255) NOT NULL,
+  `password_salt` varchar(255) NOT NULL,
   `phone` varchar(100) NOT NULL,
   `email` varchar(200) DEFAULT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
   `name` varchar(300) NOT NULL,
   `address` varchar(300) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `inno_clients_login` (`login`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
 CREATE TABLE `inno_orders` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
@@ -26,7 +25,7 @@ CREATE TABLE `inno_orders` (
   `name` varchar(300) NOT NULL,
   `address` varchar(300) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
 CREATE TABLE `inno_orders_products` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
