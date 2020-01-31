@@ -50,7 +50,7 @@ export default ({
         entry: 'http://localhost:3333/api/'
     },
     directories: {
-        images: '/images/'
+        images: '/uploads/'
     }
 });
 ```
