@@ -2,17 +2,17 @@ START TRANSACTION;
 
 CREATE TABLE `inno_clients` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `login` varchar(30) NOT NULL,
   `password_hash` varchar(255) NOT NULL,
+  `password_salt` varchar(255) NOT NULL,
   `phone` varchar(100) NOT NULL,
-  `email` varchar(200) DEFAULT NULL,
+  `email` varchar(200) NOT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
   `name` varchar(300) NOT NULL,
   `address` varchar(300) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `inno_clients_login` (`login`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  UNIQUE KEY `inno_clients_email` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE `inno_orders` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
@@ -26,7 +26,7 @@ CREATE TABLE `inno_orders` (
   `name` varchar(300) NOT NULL,
   `address` varchar(300) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE `inno_orders_products` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
@@ -35,8 +35,8 @@ CREATE TABLE `inno_orders_products` (
   `quantity` int unsigned NOT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`id`),
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE `inno_products` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -51,7 +51,7 @@ CREATE TABLE `inno_products` (
   `subheader` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `inno_products_code` (`code`)
-) ENGINE=InnoDB AUTO_INCREMENT=99 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `inno_products` (`id`,`name`,`code`,`enabled`,`description`,`price`,`createdAt`,`updatedAt`,`image`,`subheader`) VALUES (1,'California-style pizza','cecdae37-6240-4d70-b11b-f9239f33f232',1,'California-style pizza is really just a combination of other pizza styles, spruced up with a local twist. This single-serving pizza comes with a thin crust, emulating that of New York-style pizza or traditional Italian crusts.',10.00,'2020-01-22 00:17:30','2020-01-22 00:17:30','california.jpg','best choice!');
 INSERT INTO `inno_products` (`id`,`name`,`code`,`enabled`,`description`,`price`,`createdAt`,`updatedAt`,`image`,`subheader`) VALUES (2,'Grandma pizza','b8575043-0e73-4584-9cad-5c8f925a02f5',1,'Grandma pizza is a distinct pizza that originates from Long Island, New York. It is a thin, square pizza, typically with cheese and tomatoes and is reminiscent of pizzas cooked at home by Italian housewives without a pizza oven.',15.50,'2020-01-22 00:26:05','2020-01-22 00:26:06','grandma.jpg','top offer!');
