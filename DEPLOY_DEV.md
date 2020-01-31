@@ -26,6 +26,14 @@ $ git clone git@github.com:crystalbit/node-demo-shop-api.git
 $ git clone git@github.com:crystalbit/demo-shop-howto-deploy.git
 ```
 
+## Copy images
+Unlike deploy to a server you need manually copy images from one repo to another (to gitignored directory of course):
+```console
+$ cd ~
+$ mkdir react-demo-shop-front/public/uploads
+$ cp demo-shop-howto-deploy/images/*.jpg react-demo-shop-front/public/uploads
+```
+
 ## Configure, install and build the frontend
 Install:
 ```console
